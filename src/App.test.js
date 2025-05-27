@@ -1,8 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+const SECOND = 1000;
+const MINUTE = SECOND * 60;
+jest.setTimeout(5 * MINUTE);
+
+test('simulate several long tests', (done) => {
   render(<App />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
+
+  setTimeout(() => {
+    done();
+  }, MINUTE * 4);
 });
