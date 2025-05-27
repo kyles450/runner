@@ -14,3 +14,13 @@ test('simulate several long tests', (done) => {
     done();
   }, MINUTE * 4);
 });
+
+test('add another test', (done) => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+
+  setTimeout(() => {
+    done();
+  }, MINUTE * 4);
+});
